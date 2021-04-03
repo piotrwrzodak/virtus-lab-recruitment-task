@@ -122,3 +122,8 @@ $color-3: #ffffff;
 $color-4: #0a0b0b;
 
 $font-family-1: 'Star Jedi';
+$font-family-2: 'Ubuntu', sans-serif;
+
+html {
+  font-family: $font-family-2;
+}

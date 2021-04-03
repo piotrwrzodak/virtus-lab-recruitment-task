@@ -103,6 +103,9 @@ input {
   font-weight: normal;
   font-style: normal; }
 
+html {
+  font-family: "Ubuntu", sans-serif; }
+
 .modal {
   position: fixed;
   top: 0;
