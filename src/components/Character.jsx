@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from './Modal';
 
-function Character({ character }) {
+function Character({ character, films }) {
   const [show, setShow] = useState(false);
 
   const toggle = () => {
@@ -15,7 +15,7 @@ function Character({ character }) {
         <h2>{character.gender}</h2>
         <h2>{character.birth_year}</h2>
       </li>
-      <Modal character={character} show={show} toggle={toggle} />
+      <Modal character={character} films={films} show={show} toggle={toggle} />
     </>
   );
 }

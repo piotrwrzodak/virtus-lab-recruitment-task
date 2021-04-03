@@ -16,11 +16,52 @@
 }
 
 .modal-main {
+  @include mediaWide {
+    width: 60%;
+    padding: 2rem;
+  }
   position: fixed;
-  background: white;
-  width: 80%;
+  background-color: $color-4;
+  color: $color-3;
+  width: 75%;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 1rem;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.general-info {
+  display: grid;
+  grid-template-columns: 30% 70%;
+
+  &__item {
+    color: $color-1;
+  }
+
+  &--films {
+    grid-template-columns: 100%;
+  }
+
+  &__attribute {
+    &--film {
+      margin: 3px 0 0 2rem;
+    }
+  }
+}
+
+.button {
+  background-color: $color-1;
+  color: $color-2;
+  width: 150px;
+  height: 30px;
+  margin: 1rem auto 0;
+  border: none;
+  cursor: pointer;
 }

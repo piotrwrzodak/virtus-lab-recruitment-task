@@ -117,12 +117,42 @@ input {
 
 .modal-main {
   position: fixed;
-  background: white;
-  width: 80%;
+  background-color: #0a0b0b;
+  color: #ffffff;
+  width: 75%;
   height: auto;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  padding: 1rem; }
+  @media screen and (min-width: 500px) {
+    .modal-main {
+      width: 60%;
+      padding: 2rem; } }
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px; }
+
+.general-info {
+  display: grid;
+  grid-template-columns: 30% 70%; }
+  .general-info__item {
+    color: #ffe81f; }
+  .general-info--films {
+    grid-template-columns: 100%; }
+  .general-info__attribute--film {
+    margin: 3px 0 0 2rem; }
+
+.button {
+  background-color: #ffe81f;
+  color: #000000;
+  width: 150px;
+  height: 30px;
+  margin: 1rem auto 0;
+  border: none;
+  cursor: pointer; }
 
 .header {
   height: 15vh;
@@ -157,21 +187,26 @@ input {
         font-size: 1rem; } }
 
 .container {
-  padding: 1rem;
   width: 100%;
   min-height: 85vh;
   background: url("../img/stars-background.jpg");
   background-size: 100% auto;
-  background-position: center top 60px; }
+  background-position: center top 60px;
+  display: flex;
+  justify-content: center; }
   @media screen and (min-width: 500px) {
     .container {
-      min-height: 82vh;
-      padding: 1rem 3rem; } }
+      min-height: 82vh; } }
   .container .character-list {
+    margin-top: 1rem;
+    width: 90%;
     display: flex;
     flex-direction: column;
     color: #ffe81f;
     gap: 3px; }
+    @media screen and (min-width: 500px) {
+      .container .character-list {
+        width: 70%; } }
     .container .character-list ::selection {
       background: #ffe81f;
       color: #000000; }

@@ -1,18 +1,23 @@
 .container {
   @include mediaWide {
     min-height: 82vh;
-    padding: 1rem 3rem;
   }
 
-  padding: 1rem;
   width: 100%;
   min-height: 85vh;
   background: url('../img/stars-background.jpg');
   background-size: 100% auto;
   background-position: center top 60px;
+  display: flex;
+  justify-content: center;
 
   .character-list {
+    @include mediaWide {
+      width: 70%;
+    }
     @include selectionColor;
+    margin-top: 1rem;
+    width: 90%;
     display: flex;
     flex-direction: column;
     color: $color-1;
