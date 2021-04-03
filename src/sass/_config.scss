@@ -1,23 +1,5 @@
-@mixin mediaS {
-  @media screen and (max-width: 500px) {
-    @content;
-  }
-}
-
-@mixin mediaM {
-  @media screen and (min-width: 500px) and(max-width: 900px) {
-    @content;
-  }
-}
-
-@mixin mediaL {
-  @media screen and (min-width: 900px) and (max-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin mediaXL {
-  @media screen and (min-width: 1200px) {
+@mixin mediaWide {
+  @media screen and (min-width: 500px) {
     @content;
   }
 }

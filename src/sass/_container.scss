@@ -1,0 +1,28 @@
+.container {
+  @include mediaWide {
+    height: 82vh;
+  }
+
+  padding: 1rem;
+  width: 100%;
+  min-height: 85vh;
+  background: url('../img/stars-background.jpg');
+  background-size: 100% auto;
+  background-position: center top 60px;
+
+  .character-list {
+    display: flex;
+    flex-direction: column;
+    color: $color-1;
+    gap: 3px;
+
+    &__item {
+      background-color: $color-4;
+      height: 2rem;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}
