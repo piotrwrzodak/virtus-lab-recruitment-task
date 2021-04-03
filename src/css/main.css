@@ -141,11 +141,11 @@ html {
 .general-info {
   display: grid;
   grid-template-columns: 30% 70%; }
-  .general-info__item {
+  .general-info__attribute {
     color: #ffe81f; }
   .general-info--films {
     grid-template-columns: 100%; }
-  .general-info__attribute--film {
+  .general-info__value--film {
     margin: 3px 0 0 2rem; }
 
 .button {

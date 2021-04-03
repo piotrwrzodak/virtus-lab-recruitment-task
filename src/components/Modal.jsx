@@ -1,4 +1,5 @@
 import React from 'react';
+import ModalItem from './ModalItem';
 
 function Modal({ character, films, show, toggle }) {
   const showHideClassName = show ? 'modal modal--show' : 'modal modal--hide';
@@ -7,42 +8,25 @@ function Modal({ character, films, show, toggle }) {
     <div className={showHideClassName}>
       <div className="modal-main">
         <div className="info-container">
-          <div className="general-info">
-            <h1 className="general-info__item">Name:</h1>
-            <h1 className="general-info__attribute">{character.name}</h1>
-          </div>
-          <div className="general-info">
-            <h1 className="general-info__item">Gender: </h1>
-            <h1 className="general-info__attribute">{character.gender}</h1>
-          </div>
-          <div className="general-info">
-            <h1 className="general-info__item">Birth year:</h1>
-            <h1 className="general-info__attribute"> {character.birth_year}</h1>
-          </div>
-          <div className="general-info">
-            <h1 className="general-info__item">Mass: </h1>
-            <h1 className="general-info__attribute">{character.mass}</h1>
-          </div>
+          <ModalItem attribute="Name:" value={character.name} />
+          <ModalItem attribute="Gender:" value={character.gender} />
+          <ModalItem attribute="Birth year:" value={character.birth_year} />
+          <ModalItem attribute="Mass: " value={character.mass} />
+          <ModalItem attribute="Height:" value={character.height} />
+          <ModalItem
+            attribute="Films:"
+            value={films.map((film) =>
+              character.films.includes(film.url) ? (
+                <li
+                  className="general-info__value"
+                  key={film.url + character.url}
+                >
+                  {film.title}
+                </li>
+              ) : null
+            )}
+          />
 
-          <div className="general-info">
-            <h1 className="general-info__item">Height: </h1>
-            <h1 className="general-info__attribute">{character.height}</h1>
-          </div>
-          <div className="general-info">
-            <h1 className="general-info__item">Films:</h1>
-            <ul className="general-info__attribute">
-              {films.map((film) =>
-                character.films.includes(film.url) ? (
-                  <li
-                    className="general-info__attribute"
-                    key={film.url + character.url}
-                  >
-                    {film.title}
-                  </li>
-                ) : null
-              )}
-            </ul>
-          </div>
           <button className="button" type="button" onClick={toggle}>
             Close
           </button>
