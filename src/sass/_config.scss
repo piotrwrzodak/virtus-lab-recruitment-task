@@ -3,3 +3,14 @@
     @content;
   }
 }
+
+@mixin selectionColor {
+  ::selection {
+    background: $color-1;
+    color: $color-2;
+  }
+  ::-moz-selection {
+    background: $color-1;
+    color: $color-2;
+  }
+}

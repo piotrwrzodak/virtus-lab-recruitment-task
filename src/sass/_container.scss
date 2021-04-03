@@ -1,6 +1,7 @@
 .container {
   @include mediaWide {
-    height: 82vh;
+    min-height: 82vh;
+    padding: 1rem 3rem;
   }
 
   padding: 1rem;
@@ -11,18 +12,10 @@
   background-position: center top 60px;
 
   .character-list {
+    @include selectionColor;
     display: flex;
     flex-direction: column;
     color: $color-1;
     gap: 3px;
-
-    &__item {
-      background-color: $color-4;
-      height: 2rem;
-      padding: 0 1rem;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
   }
 }

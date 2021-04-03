@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Character from './Character';
 
 function Container() {
   const [characters, setCharacters] = useState([]);
@@ -13,12 +14,8 @@ function Container() {
   return (
     <div className="container">
       <ul className="character-list">
-        {characters?.map((character) => {
-          return (
-            <li className="character-list__item" key={character.created}>
-              <h1>{character.name}</h1>
-            </li>
-          );
+        {characters.map((character) => {
+          return <Character character={character} key={character.created} />;
         })}
       </ul>
     </div>

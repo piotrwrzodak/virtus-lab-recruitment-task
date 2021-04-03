@@ -1,0 +1,11 @@
+.character {
+  background-color: $color-4;
+  height: 2rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px 0 rgba(255, 232, 31, 0.2),
+    0 6px 20px 0 rgba(255, 232, 31, 0.19);
+}

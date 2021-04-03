@@ -1,4 +1,6 @@
 .header {
+  @include selectionColor;
+
   @include mediaWide {
     height: 18vh;
   }
