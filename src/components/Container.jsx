@@ -1,37 +1,41 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { selectCharactersState } from '../store/data/characters/characters.selectors';
 import Character from './Character';
 
-function Container() {
-  const [characters, setCharacters] = useState([]);
+function Container(props) {
+  const { characters } = props;
   const [films, setFilms] = useState([]);
 
-  useEffect(() => {
-    fetch('https://swapi.dev/api/people/')
-      .then((response) => response.json())
-      .then((data) => setCharacters(data.results))
-      .then((data) => console.log(data));
+  useEffect(() => {}, [characters]);
 
+  useEffect(() => {
     fetch('https://swapi.dev/api/films/')
       .then((response) => response.json())
-      .then((data) => setFilms(data.results))
-      .then((data) => console.log(data));
+      .then((data) => setFilms(data.results));
   }, []);
 
   return (
     <div className="container">
-      <ul className="character-list">
-        {characters.map((character) => {
-          return (
-            <Character
-              character={character}
-              films={films}
-              key={character.created}
-            />
-          );
-        })}
-      </ul>
+      {characters.characters && (
+        <ul className="character-list">
+          {characters.characters?.map((character) => {
+            return (
+              <Character
+                character={character}
+                films={films}
+                key={character.created}
+              />
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }
 
-export default Container;
+const mapStateToProps = (state) => ({
+  characters: selectCharactersState(state),
+});
+
+export default connect(mapStateToProps, null)(Container);
