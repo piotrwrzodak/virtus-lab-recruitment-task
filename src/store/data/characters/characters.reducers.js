@@ -1,14 +1,11 @@
 import * as charactersAT from './characters.action-types';
 
-const initialState = { characters: null };
+const initialState = [];
 
 const charactersReducers = (state = initialState, { type, payload }) => {
   switch (type) {
     case charactersAT.SET_CHARACTERS:
-      return {
-        ...state,
-        characters: payload,
-      };
+      return [...payload];
 
     default:
       return state;

@@ -7,7 +7,9 @@ function Container(props) {
   const { characters } = props;
   const [films, setFilms] = useState([]);
 
-  useEffect(() => {}, [characters]);
+  useEffect(() => {
+    console.log(characters);
+  }, [characters]);
 
   useEffect(() => {
     fetch('https://swapi.dev/api/films/')
@@ -17,9 +19,9 @@ function Container(props) {
 
   return (
     <div className="container">
-      {characters.characters && (
+      {characters && (
         <ul className="character-list">
-          {characters.characters?.map((character) => {
+          {characters?.map((character) => {
             return (
               <Character
                 character={character}
