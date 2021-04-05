@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { selectFilmsState } from '../store/data/films/films.selectors';
 import ModalItem from './ModalItem';
 
 function Modal({ character, films, show, toggle }) {
@@ -36,4 +39,8 @@ function Modal({ character, films, show, toggle }) {
   );
 }
 
-export default Modal;
+const mapStateToProps = (state) => ({
+  films: selectFilmsState(state),
+});
+
+export default connect(mapStateToProps, null)(Modal);
