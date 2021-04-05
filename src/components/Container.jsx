@@ -26,10 +26,9 @@ function Container({ characters, loadMore, possibleLoadMore }) {
       {characters && (
         <ul className="character-list">
           {characters.map((character, index) => {
-            if (index < charactersDisplayed)
-              return (
-                <Character character={character} key={character.created} />
-              );
+            return index < charactersDisplayed ? (
+              <Character character={character} key={character.created} />
+            ) : null;
           })}
         </ul>
       )}
