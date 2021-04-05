@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+
+import { initialize } from '../store/root.actions';
 
 import Container from './Container';
 import Header from './Header';
 
-function App(props) {
-  const { init } = props;
+function App({ init }) {
   useEffect(() => {
     init();
   }, [init]);
@@ -17,4 +19,8 @@ function App(props) {
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  init: () => dispatch(initialize()),
+});
+
+export default connect(null, mapDispatchToProps)(App);
