@@ -64,4 +64,8 @@
   margin: 1rem auto 0;
   border: none;
   cursor: pointer;
+
+  &--load-more {
+    margin: 1rem auto 2rem;
+  }
 }

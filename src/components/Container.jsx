@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { selectCharactersState } from '../store/data/characters/characters.selectors';
+import { loadMoreCharacters } from '../store/data/characters/characters.actions';
+import {
+  selectCharactersState,
+  selectPossibleLoadMoreCharactersState,
+} from '../store/data/characters/characters.selectors';
 import Character from './Character';
 
-function Container({ characters }) {
+function Container({ characters, loadMore, possibleLoadMore }) {
   useEffect(() => {}, [characters]);
 
   return (
@@ -16,12 +20,22 @@ function Container({ characters }) {
           })}
         </ul>
       )}
+      {possibleLoadMore && (
+        <button className="button button--load-more" onClick={loadMore}>
+          Load more
+        </button>
+      )}
     </div>
   );
 }
 
 const mapStateToProps = (state) => ({
   characters: selectCharactersState(state),
+  possibleLoadMore: selectPossibleLoadMoreCharactersState(state),
 });
 
-export default connect(mapStateToProps, null)(Container);
+const mapDispatchToProps = (dispatch) => ({
+  loadMore: () => dispatch(loadMoreCharacters()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Container);
