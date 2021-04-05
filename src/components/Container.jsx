@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { loadMoreCharacters } from '../store/data/characters/characters.actions';
@@ -9,19 +9,32 @@ import {
 import Character from './Character';
 
 function Container({ characters, loadMore, possibleLoadMore }) {
+  const [charactersDisplayed, setCharactersDisplayed] = useState(10);
   useEffect(() => {}, [characters]);
+
+  const handleClick = () => {
+    if (charactersDisplayed % 10 === 0) {
+      loadMore();
+      setCharactersDisplayed(charactersDisplayed + 5);
+    } else {
+      setCharactersDisplayed(charactersDisplayed + 5);
+    }
+  };
 
   return (
     <div className="container">
       {characters && (
         <ul className="character-list">
-          {characters.map((character) => {
-            return <Character character={character} key={character.created} />;
+          {characters.map((character, index) => {
+            if (index < charactersDisplayed)
+              return (
+                <Character character={character} key={character.created} />
+              );
           })}
         </ul>
       )}
       {possibleLoadMore && (
-        <button className="button button--load-more" onClick={loadMore}>
+        <button className="button button--load-more" onClick={handleClick}>
           Load more
         </button>
       )}

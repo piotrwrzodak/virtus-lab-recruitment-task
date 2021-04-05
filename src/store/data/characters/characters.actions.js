@@ -21,6 +21,7 @@ export const loadMoreCharacters = () => (dispatch, getState) => {
     fetch(`https://swapi.dev/api/people/?page=${page}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         dispatch(setCharacters(data));
       });
   }
