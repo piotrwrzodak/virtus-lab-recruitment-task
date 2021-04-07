@@ -5,47 +5,109 @@ import { loadMoreCharacters } from '../store/data/characters/characters.actions'
 import {
   selectCharactersState,
   selectCharactersStateSortedByNameAsc,
+  selectCharactersStateSortedByNameDesc,
+  selectCharactersStateSortedByGenderAsc,
+  selectCharactersStateSortedByGenderDesc,
+  selectCharactersStateSortedByBirthYearAsc,
+  selectCharactersStateSortedByBirthYearDesc,
   selectCountState,
   selectPossibleLoadMoreCharactersState,
 } from '../store/data/characters/characters.selectors';
 import Character from './Character';
 
 function Container({
-  characters,
+  initialCharacters,
   loadMore,
   possibleLoadMore,
   count,
-  charactersSortedByName,
+  charactersSortedByNameAsc,
+  charactersSortedByNameDesc,
+  charactersSortedByGenderAsc,
+  charactersSortedByGenderDesc,
+  charactersSortedByBirthYearAsc,
+  charactersSortedByBirthYearDesc,
 }) {
-  let [listOfCharacters, setListOfCharacters] = useState([]);
+  let [currentListOfCharacters, setCurrentListOfCharacters] = useState([]);
   useEffect(() => {
-    setListOfCharacters(characters);
-  }, [characters, count]);
+    setCurrentListOfCharacters(initialCharacters);
+  }, [initialCharacters, count]);
+
+  const handleNameClick = () => {
+    switch (currentListOfCharacters) {
+      case initialCharacters: {
+        setCurrentListOfCharacters(charactersSortedByNameAsc);
+        break;
+      }
+      case charactersSortedByNameAsc: {
+        setCurrentListOfCharacters(charactersSortedByNameDesc);
+        break;
+      }
+      case charactersSortedByNameDesc: {
+        setCurrentListOfCharacters(charactersSortedByNameAsc);
+        break;
+      }
+      default:
+        setCurrentListOfCharacters(charactersSortedByNameAsc);
+        break;
+    }
+  };
+
+  const handleGenderClick = () => {
+    switch (currentListOfCharacters) {
+      case initialCharacters: {
+        setCurrentListOfCharacters(charactersSortedByGenderAsc);
+        break;
+      }
+      case charactersSortedByGenderAsc: {
+        setCurrentListOfCharacters(charactersSortedByGenderDesc);
+        break;
+      }
+      case charactersSortedByGenderDesc: {
+        setCurrentListOfCharacters(charactersSortedByGenderAsc);
+        break;
+      }
+      default:
+        setCurrentListOfCharacters(charactersSortedByGenderAsc);
+        break;
+    }
+  };
+
+  const handleBirthYearClick = () => {
+    switch (currentListOfCharacters) {
+      case initialCharacters: {
+        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
+        break;
+      }
+      case charactersSortedByBirthYearAsc: {
+        setCurrentListOfCharacters(charactersSortedByBirthYearDesc);
+        break;
+      }
+      case charactersSortedByBirthYearDesc: {
+        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
+        break;
+      }
+      default:
+        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
+        break;
+    }
+  };
 
   return (
     <div className="container">
-      {characters && (
+      {currentListOfCharacters && (
         <ul className="character-list">
           <div className="character character--col-names">
-            <h2
-              onClick={() =>
-                listOfCharacters === characters
-                  ? setListOfCharacters(charactersSortedByName)
-                  : setListOfCharacters(characters)
-              }
-            >
-              Name
-            </h2>
-            <h2>Gender</h2>
-            <h2>Birth year</h2>
+            <h2 onClick={() => handleNameClick()}>Name</h2>
+            <h2 onClick={() => handleGenderClick()}>Gender</h2>
+            <h2 onClick={() => handleBirthYearClick()}>Birth year</h2>
           </div>
-          {listOfCharacters?.map((character) => {
+          {currentListOfCharacters?.map((character) => {
             return <Character character={character} key={character.created} />;
           })}
         </ul>
       )}
 
-      {characters && possibleLoadMore && (
+      {currentListOfCharacters && possibleLoadMore && (
         <button className="button button--load-more" onClick={loadMore}>
           Load more
         </button>
@@ -55,8 +117,28 @@ function Container({
 }
 
 const mapStateToProps = (state) => ({
-  characters: selectCharactersState(state, state.data.characters?.count),
-  charactersSortedByName: selectCharactersStateSortedByNameAsc(
+  initialCharacters: selectCharactersState(state, state.data.characters.count),
+  charactersSortedByNameAsc: selectCharactersStateSortedByNameAsc(
+    state,
+    state.data.characters.count
+  ),
+  charactersSortedByNameDesc: selectCharactersStateSortedByNameDesc(
+    state,
+    state.data.characters.count
+  ),
+  charactersSortedByGenderAsc: selectCharactersStateSortedByGenderAsc(
+    state,
+    state.data.characters.count
+  ),
+  charactersSortedByGenderDesc: selectCharactersStateSortedByGenderDesc(
+    state,
+    state.data.characters.count
+  ),
+  charactersSortedByBirthYearAsc: selectCharactersStateSortedByBirthYearAsc(
+    state,
+    state.data.characters.count
+  ),
+  charactersSortedByBirthYearDesc: selectCharactersStateSortedByBirthYearDesc(
     state,
     state.data.characters.count
   ),
