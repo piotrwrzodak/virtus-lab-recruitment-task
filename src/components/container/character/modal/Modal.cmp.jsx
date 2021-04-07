@@ -1,8 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { connect } from 'react-redux';
-
-import { selectFilmsState } from '../store/data/films/films.selectors';
-import ModalItem from './ModalItem';
+import ModalItem from './modalItem';
 
 function Modal({ character, films, show, toggle }) {
   const showHideClassName = show ? 'modal modal--show' : 'modal modal--hide';
@@ -61,8 +58,4 @@ function Modal({ character, films, show, toggle }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  films: selectFilmsState(state),
-});
-
-export default connect(mapStateToProps, null)(Modal);
+export default Modal;
