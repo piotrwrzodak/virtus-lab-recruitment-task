@@ -106,6 +106,10 @@ input {
   border-radius: 0;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: 'Star Jedi';
   src: url('../font/Starjedi.eot?') format('eot'),
