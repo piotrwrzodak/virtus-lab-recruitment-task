@@ -10,7 +10,13 @@ const charactersReducers = (state = initialState, { type, payload }) => {
         characters: state.characters
           ? [...state.characters, ...payload.results]
           : [...payload.results],
+        count: state.count ? state.count : 10,
         possibleLoadMore: payload.next ? true : false,
+      };
+    case charactersAT.LOAD_MORE_CHARACTERS:
+      return {
+        ...state,
+        count: state.count + 5,
       };
 
     default:
