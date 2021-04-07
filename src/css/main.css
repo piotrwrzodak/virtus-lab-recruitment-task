@@ -212,7 +212,7 @@ html {
     .container {
       min-height: 82vh; } }
   .container .character-list {
-    margin: 1rem auto;
+    margin: 0.5rem auto 1rem;
     width: 80%;
     display: flex;
     flex-direction: column;
@@ -241,3 +241,8 @@ html {
   @media screen and (min-width: 500px) {
     .character {
       font-size: 1rem; } }
+  .character--col-names {
+    height: 2.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: default; }

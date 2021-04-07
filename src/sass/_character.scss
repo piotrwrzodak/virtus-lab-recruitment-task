@@ -13,4 +13,11 @@
   cursor: pointer;
   box-shadow: 0 2px 4px 0 rgba(255, 232, 31, 0.2),
     0 6px 20px 0 rgba(255, 232, 31, 0.19);
+
+  &--col-names {
+    height: 2.5rem;
+    font-weight: 600;
+    color: $color-3;
+    cursor: default;
+  }
 }

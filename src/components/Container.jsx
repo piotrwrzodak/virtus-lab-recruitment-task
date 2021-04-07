@@ -25,6 +25,11 @@ function Container({ characters, loadMore, possibleLoadMore }) {
     <div className="container">
       {characters && (
         <ul className="character-list">
+          <div className="character character--col-names">
+            <h2>Name</h2>
+            <h2>Gender</h2>
+            <h2>Birth year</h2>
+          </div>
           {characters.map((character, index) => {
             return index < charactersDisplayed ? (
               <Character character={character} key={character.created} />
@@ -32,7 +37,7 @@ function Container({ characters, loadMore, possibleLoadMore }) {
           })}
         </ul>
       )}
-      {possibleLoadMore && (
+      {characters && possibleLoadMore && (
         <button className="button button--load-more" onClick={handleClick}>
           Load more
         </button>
