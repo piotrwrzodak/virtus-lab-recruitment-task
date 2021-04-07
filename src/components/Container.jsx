@@ -27,7 +27,7 @@ function Container({
   charactersSortedByBirthYearAsc,
   charactersSortedByBirthYearDesc,
 }) {
-  let [currentListOfCharacters, setCurrentListOfCharacters] = useState([]);
+  let [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
   useEffect(() => {
     setCurrentListOfCharacters(initialCharacters);
   }, [initialCharacters, count]);
@@ -102,7 +102,7 @@ function Container({
             <h2 onClick={() => handleBirthYearClick()}>Birth year</h2>
           </div>
           {currentListOfCharacters?.map((character) => {
-            return <Character character={character} key={character.created} />;
+            return <Character character={character} key={character.name} />;
           })}
         </ul>
       )}

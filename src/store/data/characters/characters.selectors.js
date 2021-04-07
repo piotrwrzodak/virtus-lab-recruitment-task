@@ -39,18 +39,34 @@ export const selectCharactersStateSortedByGenderDesc = (state, count) =>
       ? 1
       : b.gender < a.gender
       ? -1
-      : a.name < b.name
+      : a.name > b.name
       ? 1
-      : b.name < a.name
+      : b.name > a.name
       ? -1
       : 0
   );
 
-export const selectCharactersStateSortedByBirthYearAsc = (state, count) =>
-  selectCharactersState(state, count)?.sort((a, b) =>
-    a.birth_year > b.birth_year
+const sortAsc = (a, b) => (a.name > b.name ? 1 : -1);
+
+export const selectCharactersStateSortedByBirthYearAsc = (state, count) => {
+  let selected = selectCharactersState(state, count);
+  let regex = /[0-9]+/;
+  let unknownList = [];
+  let knownList = [];
+
+  selected?.map((element) =>
+    element.birth_year === 'unknown'
+      ? unknownList.push(element)
+      : knownList.push(element)
+  );
+
+  unknownList?.sort((a, b) => sortAsc(a, b));
+
+  knownList?.sort((a, b) =>
+    parseInt(a.birth_year.match(regex)) > parseInt(b.birth_year.match(regex))
       ? 1
-      : b.birth_year > a.birth_year
+      : parseInt(a.birth_year.match(regex)) <
+        parseInt(b.birth_year.match(regex))
       ? -1
       : a.name > b.name
       ? 1
@@ -59,18 +75,41 @@ export const selectCharactersStateSortedByBirthYearAsc = (state, count) =>
       : 0
   );
 
-export const selectCharactersStateSortedByBirthYearDesc = (state, count) =>
-  selectCharactersState(state, count)?.sort((a, b) =>
-    a.birth_year < b.birth_year
-      ? 1
-      : b.birth_year < a.birth_year
-      ? -1
-      : a.name < b.name
-      ? 1
-      : b.name < a.name
-      ? -1
-      : 0
+  return knownList?.concat(unknownList);
+};
+
+export const selectCharactersStateSortedByBirthYearDesc = (state, count) => {
+  let selected = selectCharactersState(state, count);
+  let regex = /[0-9]+/;
+  let unknownList = [];
+  let knownList = [];
+
+  selected?.map((element) =>
+    element.birth_year === 'unknown'
+      ? unknownList.push(element)
+      : knownList.push(element)
   );
+
+  unknownList?.sort((a, b) => sortAsc(a, b));
+
+  knownList?.sort((a, b) => {
+    if (
+      parseInt(a.birth_year.match(regex)) ===
+      parseInt(b.birth_year.match(regex))
+    ) {
+      return a.name > b.name ? 1 : -1;
+    } else {
+      return parseInt(a.birth_year.match(regex)) >
+        parseInt(b.birth_year.match(regex))
+        ? -1
+        : 1;
+    }
+  });
+
+  unknownList?.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+
+  return knownList?.concat(unknownList);
+};
 
 export const selectPossibleLoadMoreCharactersState = (state) =>
   selectDataState(state)[FEATURE_CHARACTERS_NAME][POSSIBLE_LOAD_NAME];
