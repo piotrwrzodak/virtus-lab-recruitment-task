@@ -12,6 +12,7 @@ import {
   selectCountState,
   selectPossibleLoadMoreCharactersState,
 } from '../../store/data/characters/characters.selectors';
+import { selectLoadingState } from '../../store/data/loading/loading.selectors';
 
 import Container from './Container.cmp';
 
@@ -43,6 +44,7 @@ const mapStateToProps = (state) => ({
   ),
   possibleLoadMore: selectPossibleLoadMoreCharactersState(state),
   count: selectCountState(state),
+  loading: selectLoadingState(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

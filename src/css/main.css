@@ -227,6 +227,11 @@ html {
     .container .character-list ::-moz-selection {
       background: #ffe81f;
       color: #000000; }
+  .container .loading-header {
+    font-family: "Star Jedi";
+    color: #ffe81f;
+    font-size: 2rem;
+    margin: 20% auto; }
 
 .character {
   font-size: 14px;

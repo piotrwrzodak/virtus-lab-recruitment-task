@@ -13,13 +13,14 @@ function Container(props) {
     charactersSortedByGenderDesc,
     charactersSortedByBirthYearAsc,
     charactersSortedByBirthYearDesc,
+    loading,
   } = props;
 
   let [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
 
   useEffect(() => {
     setCurrentListOfCharacters(initialCharacters);
-  }, [initialCharacters, count]);
+  }, [initialCharacters, count, loading]);
 
   const handleNameClick = () => {
     switch (currentListOfCharacters) {
@@ -81,7 +82,11 @@ function Container(props) {
     }
   };
 
-  return (
+  return loading ? (
+    <div className="container">
+      <h1 className="loading-header">Loading...</h1>
+    </div>
+  ) : (
     <div className="container">
       {currentListOfCharacters && (
         <ul className="character-list">
