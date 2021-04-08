@@ -1,3 +1,3 @@
-import FilterSection from './FilterSection.cmp';
+import FilterSection from './FilterSection.cnt';
 
 export default FilterSection;
