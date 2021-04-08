@@ -43,9 +43,9 @@ function FilterSection({
               <button
                 type="button"
                 className="dropdown__list__item"
-                onClick={() => handleClick('Filter by film')}
+                onClick={() => handleClick('Filter by films')}
               >
-                Reset filter{' '}
+                Reset filter
               </button>
             )}
             {films?.map((item) => (
@@ -55,7 +55,7 @@ function FilterSection({
                 key={item.url}
                 onClick={() => handleClick(item)}
               >
-                {item.title}{' '}
+                {item.title}
               </button>
             ))}
           </div>

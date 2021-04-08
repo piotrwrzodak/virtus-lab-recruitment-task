@@ -11,11 +11,7 @@ function Container({
 }) {
   const [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
   const [searchInput, setSearchInput] = useState('');
-  // const [filmInput, setFilmInput] = useState({
-  //   title: 'Filter by film',
-  //   url: null,
-  // });
-  const [filmInput, setFilmInput] = useState('Filter by film');
+  const [filmInput, setFilmInput] = useState('Filter by films');
 
   useEffect(() => {
     setCurrentListOfCharacters(initialCharacters);
