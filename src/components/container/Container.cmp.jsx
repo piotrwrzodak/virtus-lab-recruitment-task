@@ -11,6 +11,11 @@ function Container({
 }) {
   const [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+  // const [filmInput, setFilmInput] = useState({
+  //   title: 'Filter by film',
+  //   url: null,
+  // });
+  const [filmInput, setFilmInput] = useState('Filter by film');
 
   useEffect(() => {
     setCurrentListOfCharacters(initialCharacters);
@@ -27,11 +32,14 @@ function Container({
           <FilterSection
             searchInput={searchInput}
             setSearchInput={setSearchInput}
+            filmInput={filmInput}
+            setFilmInput={setFilmInput}
           />
           <CharactersList
             searchInput={searchInput}
             currentListOfCharacters={currentListOfCharacters}
             setCurrentListOfCharacters={setCurrentListOfCharacters}
+            filmInput={filmInput}
           />
         </>
       )}

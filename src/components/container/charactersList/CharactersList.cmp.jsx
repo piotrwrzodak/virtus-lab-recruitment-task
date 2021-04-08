@@ -11,6 +11,7 @@ function CharactersList({
   searchInput,
   currentListOfCharacters,
   setCurrentListOfCharacters,
+  filmInput,
 }) {
   const handleNameClick = () => {
     if (currentListOfCharacters === charactersSortedByNameAsc) {
@@ -42,10 +43,26 @@ function CharactersList({
         <h2 onClick={handleGenderClick}>Gender</h2>
         <h2 onClick={handleBirthYearClick}>Birth year</h2>
       </div>
-      {currentListOfCharacters?.map((character) =>
-        character.name.match(new RegExp(`${searchInput}`, 'i')) ? (
-          <Character character={character} key={character.name} />
-        ) : null
+      {currentListOfCharacters?.map(
+        (character) =>
+          (filmInput.url &&
+            character.name.match(new RegExp(`${searchInput}`, 'i')) &&
+            character.films.includes(filmInput.url)) ||
+          (!filmInput.url &&
+            character.name.match(new RegExp(`${searchInput}`, 'i'))) ? (
+            <Character character={character} key={character.name} />
+          ) : null
+
+        // if (filmInput.url) {
+        //   if (
+        //     character.name.match(new RegExp(`${searchInput}`, 'i')) &&
+        //     character.films.includes(filmInput.url)
+        //   ) {
+        //     return <Character character={character} key={character.name} />;
+        //   }
+        // } else if (character.name.match(new RegExp(`${searchInput}`, 'i'))) {
+        //   return <Character character={character} key={character.name} />;
+        // } else return null;
       )}
     </ul>
   );

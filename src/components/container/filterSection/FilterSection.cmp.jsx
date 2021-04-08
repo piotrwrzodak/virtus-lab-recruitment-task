@@ -1,14 +1,20 @@
 import React, { useState } from 'react';
 
-function FilterSection({ searchInput, setSearchInput, films }) {
+function FilterSection({
+  searchInput,
+  setSearchInput,
+  filmInput,
+  setFilmInput,
+  films,
+}) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [title, setTitle] = useState('Filter by film');
+
   const handleInputChange = (event) => {
     setSearchInput(event.target.value);
   };
-
-  const selectItem = ({ title }) => {
-    setTitle(title);
+  const handleClick = (film) => {
+    setFilmInput(film);
+    setDropdownOpen(!dropdownOpen);
   };
 
   return (
@@ -27,19 +33,27 @@ function FilterSection({ searchInput, setSearchInput, films }) {
           className="dropdown__header"
           onClick={() => setDropdownOpen(!dropdownOpen)}
         >
-          <h3 className="dropdown__header-title">{title}</h3>
+          <h3 className="dropdown__header-title">
+            {filmInput.title ?? filmInput}
+          </h3>
         </button>
         {dropdownOpen && (
           <div role="list" className="dropdown__list">
+            {filmInput.url && (
+              <button
+                type="button"
+                className="dropdown__list__item"
+                onClick={() => handleClick('Filter by film')}
+              >
+                Reset filter{' '}
+              </button>
+            )}
             {films?.map((item) => (
               <button
                 type="button"
                 className="dropdown__list__item"
-                key={item.title}
-                onClick={() => {
-                  selectItem(item);
-                  setDropdownOpen(!dropdownOpen);
-                }}
+                key={item.url}
+                onClick={() => handleClick(item)}
               >
                 {item.title}{' '}
               </button>
