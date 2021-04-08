@@ -23,62 +23,26 @@ function Container(props) {
   }, [initialCharacters, count, loading]);
 
   const handleNameClick = () => {
-    switch (currentListOfCharacters) {
-      case initialCharacters: {
-        setCurrentListOfCharacters(charactersSortedByNameAsc);
-        break;
-      }
-      case charactersSortedByNameAsc: {
-        setCurrentListOfCharacters(charactersSortedByNameDesc);
-        break;
-      }
-      case charactersSortedByNameDesc: {
-        setCurrentListOfCharacters(charactersSortedByNameAsc);
-        break;
-      }
-      default:
-        setCurrentListOfCharacters(charactersSortedByNameAsc);
-        break;
+    if (currentListOfCharacters === charactersSortedByNameAsc) {
+      setCurrentListOfCharacters(charactersSortedByNameDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByNameAsc);
     }
   };
 
   const handleGenderClick = () => {
-    switch (currentListOfCharacters) {
-      case initialCharacters: {
-        setCurrentListOfCharacters(charactersSortedByGenderAsc);
-        break;
-      }
-      case charactersSortedByGenderAsc: {
-        setCurrentListOfCharacters(charactersSortedByGenderDesc);
-        break;
-      }
-      case charactersSortedByGenderDesc: {
-        setCurrentListOfCharacters(charactersSortedByGenderAsc);
-        break;
-      }
-      default:
-        setCurrentListOfCharacters(charactersSortedByGenderAsc);
-        break;
+    if (currentListOfCharacters === charactersSortedByGenderAsc) {
+      setCurrentListOfCharacters(charactersSortedByGenderDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByGenderAsc);
     }
   };
 
   const handleBirthYearClick = () => {
-    switch (currentListOfCharacters) {
-      case initialCharacters: {
-        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
-        break;
-      }
-      case charactersSortedByBirthYearAsc: {
-        setCurrentListOfCharacters(charactersSortedByBirthYearDesc);
-        break;
-      }
-      case charactersSortedByBirthYearDesc: {
-        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
-        break;
-      }
-      default:
-        setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
-        break;
+    if (currentListOfCharacters === charactersSortedByBirthYearAsc) {
+      setCurrentListOfCharacters(charactersSortedByBirthYearDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
     }
   };
 
