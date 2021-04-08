@@ -16,8 +16,8 @@ function Container(props) {
     loading,
   } = props;
 
-  let [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
-
+  const [currentListOfCharacters, setCurrentListOfCharacters] = useState(null);
+  const [searchInput, setSearchInput] = useState('');
   useEffect(() => {
     setCurrentListOfCharacters(initialCharacters);
   }, [initialCharacters, count, loading]);
@@ -46,6 +46,10 @@ function Container(props) {
     }
   };
 
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
+
   return loading ? (
     <div className="container">
       <h1 className="loading-header">Loading...</h1>
@@ -53,16 +57,29 @@ function Container(props) {
   ) : (
     <div className="container">
       {currentListOfCharacters && (
-        <ul className="character-list">
-          <div className="character character--col-names">
-            <h2 onClick={() => handleNameClick()}>Name</h2>
-            <h2 onClick={() => handleGenderClick()}>Gender</h2>
-            <h2 onClick={() => handleBirthYearClick()}>Birth year</h2>
+        <>
+          <div className="filter-section">
+            <input
+              type="text"
+              className="searchbar"
+              placeholder="Search.."
+              value={searchInput}
+              onChange={handleInputChange}
+            />
           </div>
-          {currentListOfCharacters?.map((character) => {
-            return <Character character={character} key={character.name} />;
-          })}
-        </ul>
+          <ul className="character-list">
+            <div className="character character--col-names">
+              <h2 onClick={() => handleNameClick()}>Name</h2>
+              <h2 onClick={() => handleGenderClick()}>Gender</h2>
+              <h2 onClick={() => handleBirthYearClick()}>Birth year</h2>
+            </div>
+            {currentListOfCharacters?.map((character) =>
+              character.name.match(new RegExp(`${searchInput}`, 'i')) ? (
+                <Character character={character} key={character.name} />
+              ) : null
+            )}
+          </ul>
+        </>
       )}
 
       {currentListOfCharacters && possibleLoadMore && (
