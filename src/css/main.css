@@ -249,7 +249,7 @@ html {
     color: #000000; }
 
 input.searchbar {
-  background-color: #000000;
+  background-color: #0a0b0b;
   height: 2rem;
   width: 200px;
   padding: 0.7rem 1rem;
@@ -258,6 +258,8 @@ input.searchbar {
   box-shadow: 0 2px 4px 0 rgba(255, 232, 31, 0.2), 0 6px 20px 0 rgba(255, 232, 31, 0.19);
   outline: #000000;
   color: #ffffff; }
+  input.searchbar:focus {
+    background-color: #000000; }
   input.searchbar::placeholder {
     color: #ffe81f;
     opacity: 1;

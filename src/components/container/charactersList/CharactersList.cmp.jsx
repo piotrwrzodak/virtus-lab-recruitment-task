@@ -1,0 +1,54 @@
+import React from 'react';
+import Character from './character/';
+
+function CharactersList({
+  charactersSortedByNameAsc,
+  charactersSortedByNameDesc,
+  charactersSortedByGenderAsc,
+  charactersSortedByGenderDesc,
+  charactersSortedByBirthYearAsc,
+  charactersSortedByBirthYearDesc,
+  searchInput,
+  currentListOfCharacters,
+  setCurrentListOfCharacters,
+}) {
+  const handleNameClick = () => {
+    if (currentListOfCharacters === charactersSortedByNameAsc) {
+      setCurrentListOfCharacters(charactersSortedByNameDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByNameAsc);
+    }
+  };
+
+  const handleGenderClick = () => {
+    if (currentListOfCharacters === charactersSortedByGenderAsc) {
+      setCurrentListOfCharacters(charactersSortedByGenderDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByGenderAsc);
+    }
+  };
+
+  const handleBirthYearClick = () => {
+    if (currentListOfCharacters === charactersSortedByBirthYearAsc) {
+      setCurrentListOfCharacters(charactersSortedByBirthYearDesc);
+    } else {
+      setCurrentListOfCharacters(charactersSortedByBirthYearAsc);
+    }
+  };
+  return (
+    <ul className="character-list">
+      <div className="character character--col-names">
+        <h2 onClick={handleNameClick}>Name</h2>
+        <h2 onClick={handleGenderClick}>Gender</h2>
+        <h2 onClick={handleBirthYearClick}>Birth year</h2>
+      </div>
+      {currentListOfCharacters?.map((character) =>
+        character.name.match(new RegExp(`${searchInput}`, 'i')) ? (
+          <Character character={character} key={character.name} />
+        ) : null
+      )}
+    </ul>
+  );
+}
+
+export default CharactersList;
