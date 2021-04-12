@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/virtus-lab-recruitment-task/static/css/main.dc92ad3d.chunk.css",
+    "main.js": "/virtus-lab-recruitment-task/static/js/main.3649e22f.chunk.js",
+    "main.js.map": "/virtus-lab-recruitment-task/static/js/main.3649e22f.chunk.js.map",
+    "runtime-main.js": "/virtus-lab-recruitment-task/static/js/runtime-main.782961e8.js",
+    "runtime-main.js.map": "/virtus-lab-recruitment-task/static/js/runtime-main.782961e8.js.map",
+    "static/js/2.930be6b3.chunk.js": "/virtus-lab-recruitment-task/static/js/2.930be6b3.chunk.js",
+    "static/js/2.930be6b3.chunk.js.map": "/virtus-lab-recruitment-task/static/js/2.930be6b3.chunk.js.map",
+    "index.html": "/virtus-lab-recruitment-task/index.html",
+    "static/css/main.dc92ad3d.chunk.css.map": "/virtus-lab-recruitment-task/static/css/main.dc92ad3d.chunk.css.map",
+    "static/js/2.930be6b3.chunk.js.LICENSE.txt": "/virtus-lab-recruitment-task/static/js/2.930be6b3.chunk.js.LICENSE.txt",
+    "static/media/main.css": "/virtus-lab-recruitment-task/static/media/stars-background.16a652e2.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.782961e8.js",
+    "static/js/2.930be6b3.chunk.js",
+    "static/css/main.dc92ad3d.chunk.css",
+    "static/js/main.3649e22f.chunk.js"
+  ]
+}
